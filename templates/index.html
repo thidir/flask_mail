@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for info in details%}
+        <h1>Hello {{info.name}}</h1>
+        <p>you ae{{info.age}}</p>
+        <p>and you currently reside in{{info.location}}</p>
+    {% end%}
+</body>
+</html>
