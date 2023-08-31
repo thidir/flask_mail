@@ -1,27 +1,27 @@
 from flask import Flask
 from dotenv import load_dotenv
 import os
-from Flask_Mail import Mail
+from flask_mail import Mail, Message
 
 
 load_dotenv()
 
 app = Flask(__name__)
 
-app.config['MAIL_SERVER']=os.getenv('MAIL_SERVER')
-app.config['MAIL_PORT'] = os.getenv('MAIL_PORT')
-app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
-app.config['MAIL_USE_TLS'] = os.getenv('MAIL_USE_TLS')
-app.config['MAIL_USE_SSL'] = os.getenv('MAIL_USE_SSL')
+app.config['MAIL_SERVER']=str(os.getenv('MAIL_SERVER'))
+app.config['MAIL_PORT'] = str(os.getenv('MAIL_PORT'))
+app.config['MAIL_USERNAME'] =str(os.getenv('MAIL_USERNAME'))
+app.config['MAIL_PASSWORD'] = str(os.getenv('MAIL_PASSWORD'))
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
 
 mail = Mail(app)
 
 @app.route('/mail')
 def index():
-    message = message(
-        subject="BUTTON EVENT"
-        recipients=["tawfeeqhidir@gamil.com"]
+    message = Message(
+        subject="BUTTON EVENT",
+        recipients=["tawfeeqhidir@gmail.com"],
         sender="peteroptimal@gmail.com"
     )
     message.body = "I pushed the button"
